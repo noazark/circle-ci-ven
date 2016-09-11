@@ -1,6 +1,9 @@
 machine:
   post:
     - ~/$CIRCLE_PROJECT_REPONAME/script/setup
+dependencies:
+  cache_directories:
+    - "/home/ubuntu/.pyenv/versions/"
 test:
   override:
     - "python run.py"
