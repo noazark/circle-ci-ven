@@ -7,3 +7,6 @@ machine:
 dependencies:
   cache_directories:
     - "/home/ubuntu/.pyenv"
+test:
+  override:
+    - "python run.py"
