@@ -2,6 +2,8 @@
 
 # exit on first non-true return value
 set -o errexit
+# exit if a command in a pipeline fails
+set -o pipefail
 
 # update pyenv to latest
 cd /home/ubuntu/.pyenv/plugins/python-build/../.. && git pull && cd -
@@ -16,4 +18,4 @@ pyenv install --skip-existing $VERSION
 # rm -rf ~/virtualenvs/venv-system
 # virtualenv ~/virtualenvs/venv-system -p /home/ubuntu/.pyenv/versions/$VERSION/bin/python
 
-pyenv global $VERSION
+pyenv local $VERSION
