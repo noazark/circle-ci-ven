@@ -9,3 +9,4 @@ dependencies:
 test:
   override:
     - "python run.py"
+    - "node run.js"

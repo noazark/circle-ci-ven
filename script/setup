@@ -5,15 +5,18 @@ set -o errexit
 # exit if a command in a pipeline fails
 set -o pipefail
 
+# set pwd
+cd "$(dirname "$0")/.."
+
 echo 'Upgrading pyenv to latest'
 cd /home/ubuntu/.pyenv/ && git pull && cd -
 
-# go back home
-cd "$(dirname "$0")/.."
+PYTHON_VERSION=$(cat ./runtime.txt | sed 's/python-//')
+echo "Installing Python v$PYTHON_VERSION"
+pyenv install --skip-existing $PYTHON_VERSION
+pyenv local $PYTHON_VERSION
 
-VERSION=$(cat ./runtime.txt | sed 's/python-//')
-
-echo "Installing Python v$VERSION"
-pyenv install --skip-existing $VERSION
-
-pyenv local $VERSION
+NODE_VERSION=$(cat ./package.json | jq --raw-output '.engines.node')
+echo "Installing Node.js v$PYTHON_VERSION"
+nvm install $NODE_VERSION
+nvm alias default $NODE_VERSION

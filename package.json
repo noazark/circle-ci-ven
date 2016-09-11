@@ -1,0 +1,6 @@
+{
+  "name": "circle-ci-venv",
+  "engines": {
+    "node": "6.5.0"
+  }
+}
