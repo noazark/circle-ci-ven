@@ -6,7 +6,7 @@ set -o errexit
 set -o pipefail
 
 # update pyenv to latest
-cd /home/ubuntu/.pyenv/plugins/python-build/../.. && git pull && cd -
+cd /home/ubuntu/.pyenv/ && git pull && cd -
 
 # go back home
 cd "$(dirname "$0")/.."
@@ -14,8 +14,5 @@ cd "$(dirname "$0")/.."
 VERSION=$(cat ~/$CIRCLE_PROJECT_REPONAME/runtime.txt | sed 's/python-//')
 
 pyenv install --skip-existing $VERSION
-
-# rm -rf ~/virtualenvs/venv-system
-# virtualenv ~/virtualenvs/venv-system -p /home/ubuntu/.pyenv/versions/$VERSION/bin/python
 
 pyenv local $VERSION
