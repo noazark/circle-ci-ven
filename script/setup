@@ -11,7 +11,7 @@ cd /home/ubuntu/.pyenv/ && git pull && cd -
 # go back home
 cd "$(dirname "$0")/.."
 
-VERSION=$(cat ~/$CIRCLE_PROJECT_REPONAME/runtime.txt | sed 's/python-//')
+VERSION=$(cat ./runtime.txt | sed 's/python-//')
 
 echo "Installing Python v$VERSION"
 pyenv install --skip-existing $VERSION
