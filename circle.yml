@@ -1,10 +1,6 @@
 machine:
-  pre:
-    - "cd /home/ubuntu/.pyenv/plugins/python-build/../.. && git pull && cd -" # upgrading pyenv to latest
-    - "eval \"$(pyenv init -)\" && pyenv install --skip-existing $(cat ~/$CIRCLE_PROJECT_REPONAME/runtime.txt | sed 's/python-//')" # installing python version from /runtime.txt
   post:
-    - rm -rf ~/virtualenvs/venv-system && virtualenv ~/virtualenvs/venv-system -p /home/ubuntu/.pyenv/versions/$(cat ~/$CIRCLE_PROJECT_REPONAME/runtime.txt | sed 's/python-//')/bin/python
-    - pyenv global $(cat ~/$CIRCLE_PROJECT_REPONAME/runtime.txt | sed 's/python-//')
+    - ~/$CIRCLE_PROJECT_REPONAME/script/setup
 test:
   override:
     - "python run.py"
