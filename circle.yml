@@ -4,7 +4,7 @@ machine:
     - "eval \"$(pyenv init -)\" && pyenv install --skip-existing $(cat ~/$CIRCLE_PROJECT_REPONAME/runtime.txt | sed 's/python-//')" # installing python version from /runtime.txt
   post:
     - rm -rf ~/virtualenvs/venv-system && virtualenv ~/virtualenvs/venv-system -p /home/ubuntu/.pyenv/versions/$(cat ~/$CIRCLE_PROJECT_REPONAME/runtime.txt | sed 's/python-//')/bin/python
-    - pyenv global 2.7.12
+    - pyenv global $(cat ~/$CIRCLE_PROJECT_REPONAME/runtime.txt | sed 's/python-//')
 test:
   override:
     - "python run.py"
