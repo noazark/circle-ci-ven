@@ -19,4 +19,4 @@ pyenv local $PYTHON_VERSION
 NODE_VERSION=$(cat ./package.json | jq --raw-output '.engines.node')
 echo "Installing Node.js v$PYTHON_VERSION"
 nvm install $NODE_VERSION
-nvm alias default $NODE_VERSION
+nvm use $NODE_VERSION
