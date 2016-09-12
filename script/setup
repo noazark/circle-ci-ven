@@ -16,7 +16,7 @@ echo "Installing Python v$PYTHON_VERSION"
 pyenv install --skip-existing $PYTHON_VERSION
 pyenv local $PYTHON_VERSION
 
-ls -hal ~/nvm
+source $NVM_DIR/nvm.sh
 
 NODE_VERSION=$(cat ./package.json | jq --raw-output '.engines.node')
 echo "Installing Node.js v$PYTHON_VERSION"
