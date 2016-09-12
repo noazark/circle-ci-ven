@@ -1,6 +1,3 @@
-machine:
-  node:
-    version: 0.10.22
 dependencies:
   cache_directories:
     # caching versions appears to save a lot of time but a slow cache restore
