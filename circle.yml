@@ -1,13 +1,13 @@
 machine:
   node:
     version: 0.10.22
-  post:
-    - ~/$CIRCLE_PROJECT_REPONAME/script/setup
 dependencies:
   cache_directories:
     # caching versions appears to save a lot of time but a slow cache restore
     # may cause other issues down the line.
     - "/home/ubuntu/.pyenv/versions/"
+  override:
+    - ~/$CIRCLE_PROJECT_REPONAME/script/setup
 test:
   override:
     - "python run.py"
